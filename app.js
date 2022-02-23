@@ -6,14 +6,13 @@ const startGame = document.querySelector('.btn__reset');
 const overlay = document.getElementById('overlay');
 let missed = 0;
 
-// 3. Attach Event Listener to "Start Game" button to hide start screen overlay
+// Attach Event Listener to "Start Game" button to hide start screen overlay
 
-startGame.addEventListener('click', () => {
-    const overlay = document.getElementById('overlay');
+startGame.addEventListener('click', (e) => {
     overlay.style.display = 'none';
 });
 
-// 4. Create a phrases array that contains 5 phrases
+// Create a phrases array that contains 5 phrases
 
 const phrases = [
     'call the po po', 
@@ -23,7 +22,7 @@ const phrases = [
     'laugh your way to the bank'
 ]
 
-// 5. Create a getRandomPhraseAsArray function
+// Create a getRandomPhraseAsArray function
 
 function getRandomPhraseAsArray(arr){
     const randomNumber = Math.floor( Math.random() * arr.length );
@@ -31,9 +30,7 @@ function getRandomPhraseAsArray(arr){
     return randomPhrase(phrases).split('');
     }
 
-// 6. Set the game display
-
-    // Create an addPhraseToDisplay function that loops thorugh an array of characters //
+// Create an addPhraseToDisplay function that loops thorugh an array of characters
 function addPhraseToDisplay(arr) {
     for (let i = 0; i < phraseArr.length; i++) {
        
@@ -44,6 +41,7 @@ function addPhraseToDisplay(arr) {
         li.textContent = arr[i];
 
         // Append that list item to the #​phrase u​l​ in your HTML
+        const phraseUl = document.querySelector('#phrase ul');
         phraseUl.appendChild(li);
         if (arr[i] === " ") {
             li.classList.add("space");
@@ -53,8 +51,8 @@ function addPhraseToDisplay(arr) {
         }
 
         // To use the function, you’ll get the value returned by the getRandomPhraseAsArray​, save it to a variable, and pass it to addPhraseToDisplay​ as an argument.
-        const getRandomPhraseAsArray;
-        return getRandomPhraseAsArray(addPhraseToDisplay);
+        const phraseArray = getRandomPhraseAsArray(phrases);
+        addPhraseToDisplay(phraseArray);
     }
 
 // 7. CheckLetter function. 
@@ -80,7 +78,7 @@ if (e.target.tagName === "BUTTON") {
     const button = e.target;
     button.classList.add("chosen")
     button.disabled = true;
-    
+}
 // Call the ​checkLetter​ function and store the results in a variable.
 let result = checkLetter(button);
 
