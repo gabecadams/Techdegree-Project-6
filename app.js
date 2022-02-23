@@ -1,16 +1,16 @@
-// 1. Create a guessing game
+// Get elements from HTML
 
-// 2. Get elements you'll need from HTML
-
-const keyboard = document.getElementById('qwerty');
+const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
+const startGame = document.querySelector('.btn__reset');
+const overlay = document.getElementById('overlay');
 let missed = 0;
 
 // 3. Attach Event Listener to "Start Game" button to hide start screen overlay
 
-const startGame = document.querySelector('.btn__reset');
 startGame.addEventListener('click', () => {
-overlay.style.display = 'none';
+    const overlay = document.getElementById('overlay');
+    overlay.style.display = 'none';
 });
 
 // 4. Create a phrases array that contains 5 phrases
@@ -41,47 +41,54 @@ function addPhraseToDisplay(arr) {
         const li = document.createElement('li');
 
         // Put the character inside of the list item
-        // ??
+        li.textContent = arr[i];
 
         // Append that list item to the #​phrase u​l​ in your HTML
-        phraseUl.append(li);
+        phraseUl.appendChild(li);
+        if (arr[i] === " ") {
+            li.classList.add("space");
+        } else {
+            li.classList.add("letter");
+        }
+        }
 
         // To use the function, you’ll get the value returned by the getRandomPhraseAsArray​, save it to a variable, and pass it to addPhraseToDisplay​ as an argument.
         const getRandomPhraseAsArray;
         return getRandomPhraseAsArray(addPhraseToDisplay);
     }
 
-// 7. Create a checkLetter function. (Function should have one parameter: the button the player has clicked when guessing a letter.)
-    function checkLetter(button) {
+// 7. CheckLetter function. 
+    function checkLetter(button); {
 
     // The function should loop over the letters and check if they match the letter in the button the player has chosen.
     const letters = document.querySelector('button');
-    // ??
-
+        let match = null;
+        for (let i = 0; i < li.length; i++) {
+            if (li[i].textContent === button.textContent){
+                li[i].classList.add('show');
+            }   match = classic
     // If there’s a match, the function should add the “show” class to the list item containing that letter, store the matching letter inside of a variable, and return that letter.
-
-    // ??
-
-    // If a match wasn’t found, the function should return null.
-    let matchLetter = null
 
     }
 
-}
 
 // 8. Add an event listener to the keyboard.
-element.addEventListener('click', function(qwerty) {
+qwerty.addEventListener('click', (e) => {
 
 // Use a conditional to filter out clicks that don’t happen on the buttons or if the button already has the “chosen” class
-if (clicks > i) {
-    const outcome = "if block";
-
+if (e.target.tagName === "BUTTON") {
+    const button = e.target;
+    button.classList.add("chosen")
+    button.disabled = true;
+    
 // Call the ​checkLetter​ function and store the results in a variable.
-    // ??
-checkLetter();
-const results; 
+let result = checkLetter(button);
+
 // If the ​checkLetter​ function does not find a letter, remove one of the heart images and increment the m​issed​ counter
-    // ??
+    if(result === null) {
+        const remove = document.querySelectorAll(".liveHeart img")
+    }
+        
 }
 
 // 9. Count the missed guesses in the game
