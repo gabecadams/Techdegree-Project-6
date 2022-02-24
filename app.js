@@ -58,16 +58,15 @@ function checkLetter(button) {
 qwerty.addEventListener('click', (e) => {
     let button = e.target;
     if (button.tagName === 'BUTTON' || button.className === 'chosen') {
-        const button = e.target;
-        button.className = 'chosen';
+        button.classList.add('chosen');
         let letterFound = checkLetter(button);
         button.disabled = true;
     if  (letterFound === null) {
     const hearts = document.querySelectorAll('.tries img');
-    hearts[missed].src = 'images/lostHeart.png';
+    hearts[missed].src='images/lostHeart.png';
     missed +=1;
     }
-    checkWin()
+    checkWin();
 }
 });
 
@@ -75,14 +74,15 @@ qwerty.addEventListener('click', (e) => {
 function checkWin() {
     const letter = document.getElementsByClassName('letter');
     const show = document.getElementsByClassName('show');
+    let message = document.querySelector(".title");
     if (letter.length === show.length) {
         overlay.className = ('win');
+        message.innerText= "You won!";
         overlay.style.display = 'flex';
-        h2.textContent = 'You win!';
     } else if (missed > 4) {
         overlay.className = ('lose');
-        h2.textContent = 'You lost';
-        overlay.display.style = 'flex';
+        message.innerHTML = "Try again";
+        overlay.style.display = 'flex';
     }
 
 }
