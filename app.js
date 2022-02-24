@@ -2,7 +2,6 @@ const keyboard = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const startGame = document.querySelector('.btn__reset');
 const overlay = document.getElementById('overlay');
-const heart = document.getElementsByClassName('tries');
 let missed = 0;
 
 const phrases = [
@@ -64,10 +63,26 @@ qwerty.addEventListener('click', (e) => {
         let letterFound = checkLetter(button);
         button.disabled = true;
     if  (letterFound === null) {
-    heart.src='images/lostHeart.png';
-    const tries = document.getElementById('scoreboard');
-    tries.remove();
+    const hearts = document.querySelectorAll('.tries img');
+    hearts[missed].src = 'images/lostHeart.png';
     missed +=1;
-}
     }
+    checkWin()
+}
 });
+
+
+function checkWin() {
+    const letter = document.getElementsByClassName('letter');
+    const show = document.getElementsByClassName('show');
+    if (letter.length === show.length) {
+        overlay.className = ('win');
+        overlay.style.display = 'flex';
+        h2.textContent = 'You win!';
+    } else if (missed > 4) {
+        overlay.className = ('lose');
+        h2.textContent = 'You lost';
+        overlay.display.style = 'flex';
+    }
+
+}
