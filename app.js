@@ -41,20 +41,19 @@ function addPhraseToDisplay(arr) {
     addPhraseToDisplay(phraseArray);
 
 function checkLetter(button) {
-    const letters = document.querySelectorAll('letters');
+    const letters = document.querySelectorAll('.letter');
     let match = null;
     for (let i = 0; i < letters.length; i++) {
-    if (letters.textContent[i] === button.textContent) {
-        li.classList.add("show");
-    } else {
-        li.classList.add("letter");
+    if (letters[i].textContent === button.textContent) {
+        letters[i].classList.add("show");
+        match = (letters[i] === button.textContent);
     }
 }
     return match;
 };
 
 
-qwerty.addEventListener('click', (e) => {
+keyboard.addEventListener('click', (e) => {
     let button = e.target;
     if (button.tagName === 'BUTTON' || button.className === 'chosen') {
         button.classList.add('chosen');
