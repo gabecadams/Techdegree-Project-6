@@ -24,7 +24,6 @@ function getRandomPhraseAsArray(arr) {
 
 const phraseArray = getRandomPhraseAsArray(phrases);
 
-
 function addPhraseToDisplay(arr) {
     console.log(phraseArray);
     for (let i = 0; i < phraseArray.length; i++) {
@@ -42,7 +41,7 @@ function addPhraseToDisplay(arr) {
     addPhraseToDisplay(phraseArray);
 
 function checkLetter(button) {
-    const letters = document.querySelectorAll('letters')
+    const letters = document.querySelectorAll('letters');
     let match = null;
     for (let i = 0; i < letters.length; i++) {
     if (letters.textContent[i] === button.textContent) {
@@ -51,7 +50,7 @@ function checkLetter(button) {
         li.classList.add("letter");
     }
 }
-    return match
+    return match;
 };
 
 
@@ -74,15 +73,14 @@ qwerty.addEventListener('click', (e) => {
 function checkWin() {
     const letter = document.getElementsByClassName('letter');
     const show = document.getElementsByClassName('show');
-    let message = document.querySelector(".title");
+    let title = document.querySelector(".title");
     if (letter.length === show.length) {
         overlay.className = ('win');
-        message.innerText= "You won!";
+        title.textContent = "You won!";
         overlay.style.display = 'flex';
     } else if (missed > 4) {
         overlay.className = ('lose');
-        message.innerHTML = "Try again";
+        title.textContent = "Try again";
         overlay.style.display = 'flex';
     }
-
 }
